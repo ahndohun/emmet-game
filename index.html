@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+	<meta charset="UTF-8">
+	<title>Emmet Game</title>
+	<link rel="stylesheet" type="text/css" href="css/prism.css">
+</head>
+<body>
+	
+	<style>
+		body {
+			background:#00334E;
+			text-align:center;
+		}
+
+		h1 {
+			margin-bottom:25px;
+			line-height:66px;
+			color:#fff;
+			text-align:left;
+			
+		}
+
+		h1 * {vertical-align:middle;}
+
+		.main {
+			padding:25px;
+			background:#145374;
+			border-radius: 5px;
+		}
+
+		.example {
+			margin-bottom:25px !important;
+			border-radius: 5px;
+		}
+
+		textarea {
+			display:inline-block;
+			height:30px;
+			padding:10px 0;
+			font-size:26px;
+			line-height:26px;
+			font-weight:bold;
+			border-radius:5px;
+		}
+
+		textarea::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+		  text-align:center;
+		}
+	</style>
+	
+	<div class="main">
+
+		<h1>
+			<img src="http://emmet.io/-/4076541266/i/logo.svg" alt="Emmet" class="site-name__logo site-name__logo_svg">
+			<strong>Emmet Game</strong>
+		</h1>
+		<textarea class="hidden_textarea"></textarea>
+		<pre class="example line-numbers language-markup">
+		    <code></code>
+		</pre>
+
+		<textarea class="answer" placeholder="Insert Emmet Code"></textarea>
+	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="js/emmet.js"></script>
+	<script src="js/prism.js"></script>
+	<script src="js/common.js"></script>
+</body>
+</html>
