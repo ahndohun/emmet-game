@@ -1,70 +1,46 @@
 <!DOCTYPE html>
-<html lang="ko-KR">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Emmet Game</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/prism.css">
 </head>
 <body>
-	
-	<style>
-		body {
-			background:#00334E;
-			text-align:center;
-		}
 
-		h1 {
-			margin-bottom:25px;
-			line-height:66px;
-			color:#fff;
-			text-align:left;
-			
-		}
-
-		h1 * {vertical-align:middle;}
-
-		.main {
-			padding:25px;
-			background:#145374;
-			border-radius: 5px;
-		}
-
-		.example {
-			margin-bottom:25px !important;
-			border-radius: 5px;
-		}
-
-		textarea {
-			display:inline-block;
-			height:30px;
-			padding:10px 0;
-			font-size:26px;
-			line-height:26px;
-			font-weight:bold;
-			border-radius:5px;
-		}
-
-		textarea::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-		  text-align:center;
-		}
-	</style>
-	
-	<div class="main">
-
-		<h1>
-			<img src="http://emmet.io/-/4076541266/i/logo.svg" alt="Emmet" class="site-name__logo site-name__logo_svg">
-			<strong>Emmet Game</strong>
-		</h1>
+	<h1 style="text-align:center;">
+		<img src="http://emmet.io/-/4076541266/i/logo.svg" alt="Emmet" class="site-name__logo site-name__logo_svg"><Br>
+		<strong>Emmet Game</strong>
+	</h1>
+	<div class="game-view">
+		
 		<textarea class="hidden_textarea"></textarea>
-		<pre class="example line-numbers language-markup">
-		    <code></code>
-		</pre>
+		<div class="game">
+			<pre class="example line-numbers language-markup">
+			    <code></code>
+			</pre>
+			<div class="lifebar">
+				LIFE : <span class="life"></span><br>
+				TIME : <span class="time" style="font-size:18px"></span><br>
+			</div>
+			<textarea class="answer" placeholder="Insert Emmet Code"></textarea>
+		</div>
+	</div>
+	
+	<!-- 게임시작 -->
+	<div class="game-start">
+		<button type="button" class="start-game">Game Start</button>
+	</div>
 
-		<textarea class="answer" placeholder="Insert Emmet Code"></textarea>
+	<!-- 게임오버 -->
+	<div class="game-over">
+		<h1>gameover</h1>
+		<button type="button" class="restart-game">restart</button>
 	</div>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="js/emmet.js"></script>
+	<script src="js/emmet.auto.tirgger.js"></script>
 	<script src="js/prism.js"></script>
 	<script src="js/common.js"></script>
 </body>
