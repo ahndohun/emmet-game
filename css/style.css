@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Sabo-Filled';
-  src: url('/font/Sabo-Filled.eot?#iefix') format('embedded-opentype'),  url('/font/Sabo-Filled.otf')  format('opentype'),
-	     url('/font/Sabo-Filled.woff') format('woff'), url('/font/Sabo-Filled.ttf')  format('truetype'), url('/font/Sabo-Filled.svg#Sabo-Filled') format('svg');
+  src: url('../font/Sabo-Filled.eot?#iefix') format('embedded-opentype'),  url('../font/Sabo-Filled.otf')  format('opentype'),
+	     url('../font/Sabo-Filled.woff') format('woff'), url('../font/Sabo-Filled.ttf')  format('truetype'), url('../font/Sabo-Filled.svg#Sabo-Filled') format('svg');
   font-weight: normal;
   font-style: normal;
 }
