@@ -37,6 +37,7 @@ var life,
 	code_view = $('code'),
 	code_write = $('.answer'),
 	hidden_textarea = $('.hidden_textarea'),
+	logo = $('.logo'),
 	tab_click = $.Event('keydown', {'keyCode': 9, 'target': hidden_textarea[0]});
 
 // 초기화
@@ -62,6 +63,7 @@ function game_over() {
 	game_play_view.hide();
 	game_start_view.hide();
 	game_over_view.fadeIn();
+	restart_game_button.focus();
 	initialize();
 }
 
@@ -93,7 +95,7 @@ restart_game_button.click(function() {
 	game_play_view.hide();
 	game_over_view.hide();
 	game_start_view.fadeIn();
-	
+	start_game_button.focus();
 });
 
 // 타임리미트
@@ -117,6 +119,15 @@ code_write.on('keyup', function(e) {
 
 		// 정답일 경우
 		if (exam === memory_word) {
+
+			logo.addClass("goodjob").delay(500).queue(function(){
+			    $(this).removeClass("goodjob").dequeue();
+			});
+
+			code_write.addClass("gr").delay(200).queue(function(){
+			    $(this).removeClass("gr").dequeue();
+			});
+
 			time += 5;
 			nextExam();
 		} 
@@ -137,3 +148,5 @@ code_write.on('keyup', function(e) {
 	}
 
 });
+
+start_game_button.focus();

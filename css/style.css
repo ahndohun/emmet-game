@@ -77,7 +77,32 @@ button {
 	color:#fff;
 	border:1px solid #fff;
 	cursor: pointer;
-	transition: 0.2s all;
+	transition: 0.5s all;
+	outline: none;
+}
+
+button:focus, button:hover {
+	border:5px solid green;
+}
+
+.gr {
+	outline:3px solid green;
+	animation: gr 0.2s ease-in-out
+}
+
+@keyframes gr {
+    25% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    75% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .wn {
@@ -99,5 +124,22 @@ button {
         transform: translateX(5px);
     }
 }
+
+.goodjob {
+	animation: goodjob 0.2s ease-in-out
 }
 
+@keyframes goodjob {
+    25% {
+        transform: scale(1.5);
+    }
+    50% {
+        transform: scale(2);
+    }
+    75% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
