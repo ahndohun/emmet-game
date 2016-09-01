@@ -22,6 +22,10 @@ h1 {
 
 h1 * {vertical-align:middle;}
 
+.logo {
+	max-width:80px;
+}
+
 .main {
 	padding:25px;
 }
@@ -54,6 +58,7 @@ textarea::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 .lifebar {
 	margin-bottom:15px;
 	color:#fff;
+	font-size:24px;
 }
 
 .game-view {
@@ -107,39 +112,48 @@ button:focus, button:hover {
 
 .wn {
 	outline:3px solid red;
-	animation: wn 0.2s ease-in-out
+	animation: wn 0.2s ease-in-out;
 }
 
 @keyframes wn {
     25% {
-        transform: translateX(-5px);
+        transform: translateX(-10px);
     }
     50% {
-        transform: translateX(5px);
+        transform: translateX(10px);
     }
     75% {
-        transform: translateX(-5px);
+        transform: translateX(-10px);
     }
     100% {
-        transform: translateX(5px);
+        transform: translateX(10px);
     }
 }
 
 .goodjob {
-	animation: goodjob 0.2s ease-in-out
+	animation: goodjob 0.2s ease-in-out;
 }
 
 @keyframes goodjob {
-    25% {
-        transform: scale(1.5);
-    }
     50% {
         transform: scale(2);
-    }
-    75% {
-        transform: scale(1.5);
     }
     100% {
         transform: scale(1);
     }
 }
+
+.boom {
+	display:inline-block;
+	animation: boom 1s ease-in-out infinite;
+	color:red;
+}
+
+@keyframes boom {
+    50% {
+        transform: scale(2);
+    }    100% {
+        transform: scale(1);
+    }
+}
+

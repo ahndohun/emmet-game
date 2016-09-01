@@ -101,6 +101,12 @@ restart_game_button.click(function() {
 // 타임리미트
 setInterval(function() {
 	time_display.text(--time);
+	if ( time > 10 ) {
+		time_display.removeClass("boom");
+	}
+	if ( time <= 10 ) {
+		time_display.addClass("boom");
+	}
 	if ( time === 0 ) {
 		game_over();
 	}
@@ -130,15 +136,17 @@ code_write.on('keyup', function(e) {
 
 			time += 5;
 			nextExam();
+
 		} 
 
 		// 오답일 경우
 		else {
-			life_display.text(--life);
 
 			code_write.addClass("wn").delay(200).queue(function(){
 			    $(this).removeClass("wn").dequeue();
 			});
+
+			life_display.text(--life);
 		}
 	}
 
