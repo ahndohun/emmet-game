@@ -68,9 +68,16 @@ textarea::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 	display:none;
 	font-size:30px;
 }
+.game-mode-select {
+	display:none;
+}
 .game-over h1 {
 	text-align:center;
 	color:red;
+}
+
+.game-difficult-select {
+	display: none;
 }
 
 button {
@@ -143,6 +150,30 @@ button:focus, button:hover {
     }
 }
 
+.time_up {
+	position: relative;
+}
+
+.time_up:after {
+	position:absolute;
+	top:0;
+	right:-30px;
+	display:block;
+	content:'+3';
+	font-size:13px;
+	animation: timeup 0.5s ease-in-out;
+	color:green;
+}
+
+@keyframes timeup {
+    50% {
+        transform: scale(2);
+    }    100% {
+        transform: scale(1);
+        opacity:0;
+    }
+}
+
 .boom {
 	display:inline-block;
 	animation: boom 1s ease-in-out infinite;
@@ -154,6 +185,30 @@ button:focus, button:hover {
         transform: scale(2);
     }    100% {
         transform: scale(1);
+    }
+}
+
+.damage {
+	position: relative;
+}
+
+.damage:after {
+	position:absolute;
+	top:0;
+	right:-30px;
+	display:block;
+	content:'-1';
+	font-size:13px;
+	animation: damage 0.5s ease-in-out;
+	color:red;
+}
+
+@keyframes damage {
+    50% {
+        transform: scale(2);
+    }    100% {
+        transform: scale(1);
+        opacity:0;
     }
 }
 
