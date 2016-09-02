@@ -2,47 +2,71 @@
 // emmet_obj 참조
 var emmet_obj = emmet.require('textarea');
 
+
 // HTML 문제 목록
-var html_exam_list = [
+var html_beginner_exam_list = [
+	'ul>li.item$*5',
+	'ul>li*5',
+	'div+p+bq',
+	'a{click}',
+	'#header',
+	'.title',
+	'br',
+	'a'
+];
+
+var html_expert_exam_list = [
+	'[a="value1" b="value2"]',
+	'p[title="hello world"]',
+	'table>.row>.col',
+	'table+',
+	'meta:compat',
+	'meta:vp',
+	'!'
+];
+
+var html_master_exam_list = [
 	'div>(header>ul>li*2>a)+footer>p',
 	'(div>dl>(dt+dd)*3)+footer>p',
+	'div>(header>ul>li*2>a)+footer>p',
 	'h$[title=item$]{Header $}*3',
-	'div+div>p>span+em^^bq',
-	'div+div>p>span+em^bq',
-	'html:5',
-	'p[title="hello world"]',
-	'ul>li.item$*5',
-	'div+p+bq',
-	'nav>ul>li'
+	'ul>li.item$@3*5',
+	'ul>li.item$@-*5',
+	'ul>li.item$$$*5'
 ];
 
 // CSS 문제 목록
-var css_exam_list = [
-	'bg:n',
-	'pos:r',
-	'ov:h',
-	'cur:p',
-	'mr:a',
-	'bxz',
-	'maw',
-	'va:t',
-	'ta:c',
-	'td:n',
-	'tbl:f',
-	'bd+',
-	'bd:n',
-	'lis:n'
-];
+// var css_exam_list = [
+// 	'bg:n',
+// 	'pos:r',
+// 	'ov:h',
+// 	'cur:p',
+// 	'mr:a',
+// 	'bxz',
+// 	'maw',
+// 	'va:t',
+// 	'ta:c',
+// 	'td:n',
+// 	'tbl:f',
+// 	'bd+',
+// 	'bd:n',
+// 	'lis:n'
+// ];
+
 
 // 상태 변수 모음
 var life,
 	life_display = $('.life'),
-	time,
+	time = 9999,
 	time_display = $('.time'),
+	score = 0,
+	score_display = $('.score'),
+	clear_score,
 	start_game_button = $('.start-game'),
 	restart_game_button = $('.restart-game'),
 	html_mode_button = $('.html-emmet'),
 	css_mode_button = $('.css-emmet'),
+	game_difficult,
 	game_difficult_select = $('.game-difficult-select'),
 	beginner = $('.beginner'),
 	expert = $('.expert'),
@@ -50,6 +74,7 @@ var life,
 	game_play_view = $('.game-view'),
 	game_start_view = $('.game-start'),
 	game_mode_select = $('.game-mode-select'),
+	game_clear_view = $('.game-clear'),
 	game_over_view = $('.game-over'),
 	exam_list_temp,
 	code_view_language = $('pre'),
@@ -61,10 +86,13 @@ var life,
 
 // 초기화
 function initialize() {
+	score = 0;
+	score_display.text(score);
 	life_display.text(life);
 	time_display.text(time);
 	nextExam();
 }
+
 
 // 게임시작
 function game_start() {
@@ -79,6 +107,7 @@ start_game_button.click(function() {
 	game_mode();
 });
 
+
 // 게임 모드 선택
 function game_mode() {
 	game_start_view.hide();
@@ -89,70 +118,126 @@ function game_mode() {
 
 // html 게임모드
 html_mode_button.on("click", function() {
-
 	$(".language-css").removeClass('language-css');
 	code_view_language.addClass('language-markup');
-	Prism.highlightAll();
-
 	emmet_obj.setup({
 		pretty_break: true,
 		use_tab: true,
 		syntax: 'html'
 	});
-
-	exam_list_temp = html_exam_list.slice(0);
 	difficult_select();
-
 });
 
 // css 게임모드
-css_mode_button.on("click", function() {
+// css_mode_button.on("click", function() {
+// 	$(".language-markup").removeClass('language-markup');
+// 	code_view_language.addClass('language-css');
+// 	emmet_obj.setup({
+// 		pretty_break: true,
+// 		use_tab: true,
+// 		syntax: 'css'
+// 	});
+// 	exam_list_temp = css_exam_list.slice(0);
+// 	difficult_select();
+// });
 
-	$(".language-markup").removeClass('language-markup');
-	code_view_language.addClass('language-css');
-	Prism.highlightAll();
-
-	emmet_obj.setup({
-		pretty_break: true,
-		use_tab: true,
-		syntax: 'css'
-	});
-
-	exam_list_temp = css_exam_list.slice(0);
-	difficult_select();
-
-});
 
 // 난이도 선택
 function difficult_select() {
 	game_mode_select.hide();
 	game_difficult_select.fadeIn();
-	beginner.focus();
 }
-
 
 beginner.click(function() {
 	life = 5;
 	time = 60;
+	exam_list_temp = html_beginner_exam_list.slice(0);
+	clear_score = exam_list_temp.length;
+	game_difficult = "beginner";
 	game_start();
 });
 
 expert.click(function() {
-	life = 3;
-	time = 40;
-	game_start();
+	if ( emmet_game_progress == "beginner_clear" || emmet_game_progress == "expert_clear" || emmet_game_progress == "master_clear" ) {
+		life = 3;
+		time = 40;
+		exam_list_temp = html_expert_exam_list.slice(0);
+		clear_score = exam_list_temp.length;
+		game_difficult = "expert";
+		game_start();
+	} else {
+		alert("너흰 아직 준비가 안됐다.");
+	}
 });
 
 master.click(function() {
-	life = 1;
-	time = 20;
-	game_start();
+	if ( emmet_game_progress == "expert_clear" || emmet_game_progress == "master_clear" ) {
+		life = 1;
+		time = 20;
+		exam_list_temp = html_master_exam_list.slice(0);
+		clear_score = exam_list_temp.length;
+		game_difficult = "master";
+		game_start();
+	} else {
+		alert("너흰 아직 준비가 안됐다.");
+	}
 });
+
+// 게임 진척률
+var emmet_game_progress = localStorage.getItem("emmet_progress");
+
+// 진행률 체크
+function check_game_progress() {
+
+	// 처음이거나 비기너 난이도를 클리어 못했을 경우
+	if ( emmet_game_progress == null || emmet_game_progress == undefined ) {
+		localStorage.setItem("emmet_progress", "");
+	} else if ( emmet_game_progress == "beginner_clear" ) {
+		expert.removeClass("disabled");
+	} else if ( emmet_game_progress == "expert_clear" ) {
+		expert.removeClass("disabled");
+		master.removeClass("disabled");
+	} else if ( emmet_game_progress == "master_clear" ) {
+		expert.removeClass("disabled");
+		master.removeClass("disabled");
+	}
+}
+
+check_game_progress();
+
+
+
+// 게임클리어
+function game_clear() {
+	time = 9999;
+	game_play_view.hide();
+	game_clear_view.fadeIn();
+	restart_game_button.focus();
+	emmet_game_progress = localStorage.getItem("emmet_progress");
+
+	// 비기너 난이도를 클리어했을 경우
+	if ( emmet_game_progress == "" && game_difficult == "beginner" ) {
+		localStorage.setItem("emmet_progress", "beginner_clear");
+		emmet_game_progress = localStorage.getItem("emmet_progress");
+	}
+
+	// 익스퍼트 난이도를 클리어했을 경우
+	else if ( emmet_game_progress == "beginner_clear" && game_difficult == "expert" ) {
+		localStorage.setItem("emmet_progress", "expert_clear");
+		emmet_game_progress = localStorage.getItem("emmet_progress");
+	}
+
+	// 마스터 난이도를 클리어했을 경우
+	else if ( emmet_game_progress == "expert_clear" && game_difficult == "master" ) {
+		localStorage.setItem("emmet_progress", "master_clear");
+		emmet_game_progress = localStorage.getItem("emmet_progress");
+	}
+	check_game_progress();
+}
 
 // 게임오버
 function game_over() {
 	game_play_view.hide();
-	game_start_view.hide();
 	game_over_view.fadeIn();
 	restart_game_button.focus();
 }
@@ -160,6 +245,7 @@ function game_over() {
 // 게임 재시작 버튼 이벤트
 restart_game_button.click(function() {
 	game_play_view.hide();
+	game_clear_view.hide();
 	game_mode();
 });
 
@@ -187,7 +273,7 @@ setInterval(function() {
 	if ( time > 10 ) {
 		time_display.removeClass("boom");
 	}
-	if ( time <= 10 ) {
+	if ( time <= 10 && time >= 1 ) {
 		time_display.addClass("boom");
 	}
 	if ( time === 0 ) {
@@ -223,6 +309,7 @@ code_write.on('keyup', function(e) {
 			});
 
 			time += 5;
+			score_display.text(++score);
 			nextExam();
 
 		} 
@@ -242,6 +329,10 @@ code_write.on('keyup', function(e) {
 		}
 	}
 
+	if (score == clear_score) {
+		game_clear();
+	}
+
 	// 생명력이 0 이 될경우
 	if (life == 0) {
 		game_over();
@@ -250,3 +341,4 @@ code_write.on('keyup', function(e) {
 });
 
 start_game_button.focus();
+

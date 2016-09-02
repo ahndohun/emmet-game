@@ -76,6 +76,16 @@ textarea::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 	color:red;
 }
 
+.game-clear {
+	display:none;
+	font-size:30px;
+}
+
+.game-clear h1 {
+	text-align:center;
+	color:green;
+}
+
 .game-difficult-select {
 	display: none;
 }
@@ -94,7 +104,20 @@ button {
 }
 
 button:focus, button:hover {
-	border:5px solid green;
+	border:5px solid #fff;
+}
+
+.master {
+}
+
+.disabled {
+	border: 1px solid gray !important;
+	color: gray !important;
+}
+
+.disabled:focus, .disabled:hover {
+	outline:0 !important;
+	border: 1px solid gray !important;
 }
 
 .gr {
@@ -208,7 +231,6 @@ button:focus, button:hover {
         transform: scale(2);
     }    100% {
         transform: scale(1);
-        opacity:0;
     }
 }
 

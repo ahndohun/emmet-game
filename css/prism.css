@@ -1,4 +1,4 @@
-/* http://prismjs.com/download.html?themes=prism&languages=markup+css&plugins=line-highlight+line-numbers+show-invisibles+autolinker+show-language+highlight-keywords+unescaped-markup+normalize-whitespace+keep-markup */
+/* http://prismjs.com/download.html?themes=prism&languages=markup+css&plugins=line-numbers+show-language+keep-markup */
 /**
  * prism.js default theme for JavaScript, CSS and HTML
  * Based on dabblet (http://dabblet.com)
@@ -10,10 +10,7 @@ pre[class*="language-"] {
 	color: black;
 	background: none;
 	text-shadow: 0 1px white;
-	
-  	font-family: 'Sabo-Filled';
-  	font-size:14px;
-  	font-weight:normal;
+	font-family: 'Sabo-Filled';
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
@@ -65,6 +62,7 @@ pre[class*="language-"] {
 /* Inline code */
 :not(pre) > code[class*="language-"] {
 	padding: .1em;
+	border-radius: .3em;
 	white-space: normal;
 }
 
@@ -77,8 +75,7 @@ pre[class*="language-"] {
 
 .token.punctuation {
 	color: #999;
-	font-weight;
-:}
+}
 
 .namespace {
 	opacity: .7;
@@ -140,50 +137,6 @@ pre[class*="language-"] {
 	cursor: help;
 }
 
-pre[data-line] {
-	position: relative;
-	padding: 1em 0 1em 3em;
-}
-
-.line-highlight {
-	position: absolute;
-	left: 0;
-	right: 0;
-	padding: inherit 0;
-	margin-top: 1em; /* Same as .prism’s padding-top */
-
-	background: hsla(24, 20%, 50%,.08);
-	background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
-
-	pointer-events: none;
-
-	line-height: inherit;
-	white-space: pre;
-}
-
-	.line-highlight:before,
-	.line-highlight[data-end]:after {
-		content: attr(data-start);
-		position: absolute;
-		top: .4em;
-		left: .6em;
-		min-width: 1em;
-		padding: 0 .5em;
-		background-color: hsla(24, 20%, 50%,.4);
-		color: hsl(24, 20%, 95%);
-		font: bold 65%/1.5 sans-serif;
-		text-align: center;
-		vertical-align: .3em;
-		text-shadow: none;
-		box-shadow: 0 1px white;
-	}
-
-	.line-highlight[data-end]:after {
-		content: attr(data-end);
-		top: auto;
-		bottom: .4em;
-	}
-
 pre.line-numbers {
 	position: relative;
 	padding-left: 3.8em;
@@ -224,42 +177,6 @@ pre.line-numbers > code {
 			padding-right: 0.8em;
 			text-align: right;
 		}
-.token.tab:not(:empty),
-.token.cr,
-.token.lf,
-.token.space {
-	position: relative;
-}
-
-.token.tab:not(:empty):before,
-.token.cr:before,
-.token.lf:before,
-.token.space:before {
-	color: hsl(24, 20%, 85%);
-	position: absolute;
-}
-
-.token.tab:not(:empty):before {
-    content: '\21E5';
-}
-
-.token.cr:before {
-    content: '\240D';
-}
-
-.token.crlf:before {
-    content: '\240D\240A';
-}
-.token.lf:before {
-    content: '\240A';
-}
-
-.token.space:before {
-	content: '\00B7';
-}
-.token a {
-	color: inherit;
-}
 div.prism-show-language {
 	position: relative;
 }
@@ -276,6 +193,7 @@ div.prism-show-language > div.prism-show-language-label {
 	width: auto;
 	height: auto;
 	font-size: 0.9em;
+	border-radius: 0 0 0 5px;
 	padding: 0 0.5em;
 	text-shadow: none;
 	z-index: 1;
@@ -285,16 +203,5 @@ div.prism-show-language > div.prism-show-language-label {
 	-ms-transform: none;
 	-o-transform: none;
 	transform: none;
-}
-
-/* Fallback, in case JS does not run, to ensure the code is at least visible */
-.lang-markup script[type='text/plain'],
-.language-markup script[type='text/plain'],
-script[type='text/plain'].lang-markup,
-script[type='text/plain'].language-markup {
-	display: block;
-	font: 100% Consolas, Monaco, monospace;
-	white-space: pre;
-	overflow: auto;
 }
 
