@@ -7,25 +7,33 @@
 	<link rel="stylesheet" type="text/css" href="css/prism.css">
 </head>
 <body>
-
-	<h1 style="text-align:center;">
-		<img src="images/logo.png" alt="Emmet" class="logo"><Br>
-		<strong>Emmet Game</strong>
-	</h1>
+	
+	<!-- 게임 타이틀 -->
+	<div class="game_title">
+		<h1>
+			<img src="images/logo.png" alt="Emmet">
+			<strong>Emmet Game</strong>
+		</h1>
+	</div>
+	
+	<!-- 게임 뷰 -->
 	<div class="game-view">
+
+		<!-- 문제 출력 -->
+		<pre class="example line-numbers">
+		    <code></code>
+		</pre>
 		
-		<textarea class="hidden_textarea"></textarea>
-		<div class="game">
-			<pre class="example line-numbers">
-			    <code></code>
-			</pre>
-			<div class="lifebar">
-				SCORE : <span class="score"></span><br>
-				LIFE : <span class="life"></span><br>
-				TIME : <span class="time"></span><br>
-			</div>
-			<textarea class="answer" placeholder="Insert Emmet Code"></textarea>
-		</div>
+		<!-- 게임 상태표시줄 -->
+		<ul class="status">
+			<li><strong>SCORE :</strong> <span class="score"></span></li>
+			<li><Strong>LIFE :</Strong> <span class="life"></span></li>
+			<li><Strong>TIME :</Strong> <span class="time"></span></li>
+		</ul>
+		
+		<!-- 답안 제출 -->
+		<textarea class="answer" placeholder="Insert Emmet Code"></textarea>
+
 	</div>
 	
 	<!-- 게임시작 -->
@@ -46,18 +54,34 @@
 		<button type="button" class="master disabled">HELL</button>
 	</div>
 
-	<!-- 게임오버 -->
+	<!-- 게임 클리어 -->
 	<div class="game-clear">
 		<h1>CLEAR!!!</h1>
 		<button type="button" class="restart-game">restart</button>
+
+		<form id="leaderboard" action="/json" method="POST" style="display:none;">
+		    <input type="text" name="name" value="" placeholder="USERNAME" class="id_input"  />
+		</form>
 	</div>
 
-	<!-- 게임오버 -->
+	<!-- 게임 오버 -->
 	<div class="game-over">
 		<h1>gameover</h1>
 		<button type="button" class="restart-game">restart</button>
 	</div>
+
+	<!-- 명예의 전당 -->
+	<table class="hall-of-fame">
+		<tr>
+			<th>rank</th>
+			<th>name</th>
+			<th>score</th>
+		</tr>
+	</table>
 	
+	<!-- 문제 제출용 히든 textarea -->
+	<textarea class="hidden_textarea"></textarea>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="js/emmet.js"></script>
 	<script src="js/emmet.auto.tirgger.js"></script>

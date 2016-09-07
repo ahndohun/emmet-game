@@ -1,3 +1,240 @@
-div {
-	
+@font-face {
+  font-family: 'Sabo-Filled';
+  src: url('../font/Sabo-Filled.eot?#iefix') format('embedded-opentype'),  url('../font/Sabo-Filled.otf')  format('opentype'),
+	     url('../font/Sabo-Filled.woff') format('woff'), url('../font/Sabo-Filled.ttf')  format('truetype'), url('../font/Sabo-Filled.svg#Sabo-Filled') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
+
+body {
+	font-family: 'Sabo-Filled';
+	background: #00334E;
+	text-align: center;
+}
+
+.game_title {
+	margin-bottom: 2em;
+	color: #fff;
+	text-align: center;
+	
+	strong {display: block;}
+	img {max-width: 80px;}
+}
+
+.game-view {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.answer {
+	width: 100%;
+	height:24px;
+	padding:10px 0;
+	font-size:24px;
+	line-height:24px;
+	font-weight:bold;
+	text-align:center;
+	font-family: 'Sabo-Filled';
+}
+
+.id_input {
+	width:190px;
+	height:24px;
+	padding:10px 0;
+	font-size:24px;
+	line-height:24px;
+	font-weight:bold;
+	text-align:center;
+	font-family: 'Sabo-Filled';
+}
+
+
+.answer::-webkit-input-placeholder,
+.id_input::-webkit-input-placeholder {
+  text-align: center;
+  font-family: 'Sabo-Filled';
+}
+
+.hidden_textarea {
+	position: absolute;
+	left:-9999px;
+}
+
+.status {
+	margin-bottom:15px;
+	color: #fff;
+	font-size:24px;
+	list-style: none;
+}
+
+.game-view,
+.game-mode-select,
+.game-over,
+.game-clear,
+.game-difficult-select {
+	display:none;
+	font-size:24px;
+
+	h1 {
+		text-align:center;	
+	}
+}
+
+.game-over h1 { color:red; }
+.game-clear h1 { color:green;}
+
+button {
+	font-family: 'Sabo-Filled';
+	background: none;
+	padding:10px;
+	border:0;
+	font-size: 24px;
+	color:#fff;
+	border:1px solid #fff;
+	cursor: pointer;
+	transition: 0.5s all;
+	outline: none;
+}
+
+button:focus, button:hover {
+	border:5px solid #fff;
+}
+
+
+.hall-of-fame {
+	margin:25px auto;
+	border-collapse: collapse;
+}
+
+.hall-of-fame th,
+.hall-of-fame td {
+	border: 1px solid #fff;
+	padding: 10px;
+	font-size: 18px;
+	color:#fff;
+}
+
+.disabled {
+	border: 1px solid gray !important;
+	color: gray !important;
+}
+
+.disabled:focus, .disabled:hover {
+	outline:0 !important;
+	border: 1px solid gray !important;
+}
+
+.gr {
+	outline:3px solid green;
+	animation: gr 0.2s ease-in-out
+}
+
+@keyframes gr {
+    25% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    75% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.wn {
+	outline:3px solid red;
+	animation: wn 0.2s ease-in-out;
+}
+
+@keyframes wn {
+    25% {
+        transform: translateX(-10px);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+    75% {
+        transform: translateX(-10px);
+    }
+    100% {
+        transform: translateX(10px);
+    }
+}
+
+.goodjob {
+	animation: goodjob 0.2s ease-in-out;
+}
+
+@keyframes goodjob {
+    50% {
+        transform: scale(2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.time_up {
+	position: relative;
+}
+
+.time_up:after {
+	position:absolute;
+	top:0;
+	right:-30px;
+	display:block;
+	content:'+3';
+	font-size:13px;
+	animation: timeup 0.5s ease-in-out;
+	color:green;
+}
+
+@keyframes timeup {
+    50% {
+        transform: scale(2);
+    }    100% {
+        transform: scale(1);
+        opacity:0;
+    }
+}
+
+.boom {
+	display:inline-block;
+	animation: boom 1s ease-in-out infinite;
+	color:red;
+}
+
+@keyframes boom {
+    50% {
+        transform: scale(2);
+    }    100% {
+        transform: scale(1);
+    }
+}
+
+.damage {
+	position: relative;
+}
+
+.damage:after {
+	position:absolute;
+	top:0;
+	right:-30px;
+	display:block;
+	content:'-1';
+	font-size:13px;
+	animation: damage 0.5s ease-in-out;
+	color:red;
+}
+
+@keyframes damage {
+    50% {
+        transform: scale(2);
+    }    100% {
+        transform: scale(1);
+    }
+}
+
