@@ -1,4 +1,5 @@
-
+(function($){
+  'use strict';
 
 	// emmet_obj 참조
 	var emmet_obj = emmet.require('textarea');
@@ -172,7 +173,7 @@
 			game_difficult = "expert";
 			game_start();
 		} else {
-			alert("너흰 아직 준비가 안됐다.");
+			alert("YOU ARE NOT PREPARED");
 		}
 	});
 
@@ -185,7 +186,7 @@
 			game_difficult = "master";
 			game_start();
 		} else {
-			alert("너흰 아직 준비가 안됐다.");
+			alert("YOU ARE NOT PREPARED");
 		}
 	});
 
@@ -393,3 +394,5 @@
 	}
 
 	getLeaderBoard();
+
+})(this.jQuery);
