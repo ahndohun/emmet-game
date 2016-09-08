@@ -382,7 +382,7 @@
 	start_game_button.focus();
 
 	function getLeaderBoard() {
-		var GSSurl = "https://spreadsheets.google.com/feeds/list/1s-k6BD-W-Y-O896I_Jp1SuWK4NDwN_QbrHcA9BrAbBU/1/public/basic?alt=json-in-script&orderby=column:SCORE&callback=?";
+		var GSSurl = "https://spreadsheets.google.com/feeds/list/1s-k6BD-W-Y-O896I_Jp1SuWK4NDwN_QbrHcA9BrAbBU/1/public/basic?reverse=true&alt=json-in-script&revert=true&orderby=column:score&callback=?";
 		$.getJSON(GSSurl,function(data){
 			var entry = data.feed.entry;//구글 스프레드 시트의 모든 내용은 feed.entry에 담겨있습니다.
 
