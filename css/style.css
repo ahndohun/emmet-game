@@ -9,7 +9,7 @@ body {
   text-align: center; }
 
 .game_title {
-  margin-bottom: 2em;
+  margin-bottom: 40px;
   color: #fff;
   text-align: center; }
   .game_title strong {
@@ -90,6 +90,22 @@ button {
 
 button:focus, button:hover {
   border: 5px solid #fff; }
+
+.reference {
+  padding: 30px 0 0 0; }
+  .reference li {
+    margin: 0 0 10px 0;
+    list-style: none; }
+  .reference a {
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none; }
+
+address {
+  padding: 30px 0 0 0;
+  color: #fff; }
+  address a {
+    color: green; }
 
 .hall-of-fame {
   margin: 25px auto;
